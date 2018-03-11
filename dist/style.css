@@ -3,6 +3,6 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0;
+  padding: 42px;
   min-height: 100vh;
 }
