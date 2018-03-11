@@ -1,34 +1,42 @@
 import p5 from 'p5';
 import 'p5/lib/addons/p5.sound';
 
+let canvas;
+let scene1;
+let scene2;
 const sketch = p => {
-  let canvas;
-  let scene1;
-  let scene2;
 
   p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight);
+    p.createCanvas(800, 800);
     // p.colorMode(p.HSB)
 
     scene1 = p.createGraphics(400, 400);
     scene2 = p.createGraphics(400, 400);
 
-    p.background(100)
+    p.background(255)
   };
   
-  const drawScene1 = () => {
-    scene1.background(125, 100, 125)
+  const drawScene1 = (s) => {
+    s.background(0)
+    s.stroke(255, 100, 255)
+    s.strokeWeight(4)
+    s.noFill()
+    s.ellipse(p.mouseX / 2, p.mouseY / 2, 30, 30)
   }
   
-  const drawScene2 = () => {
-    scene2.background(125, 255, 125)
+  const drawScene2 = (s) => {
+    s.background(125, 255, 125)
+    s.stroke(100, 255, 255)
+    s.strokeWeight(4)
+    s.noFill()
+    s.ellipse((p.mouseX / 2) - 200 , p.mouseY / 2, 30, 30)
   }
   
   p.draw = () => {
-    drawScene1()
+    drawScene1(scene1)
+    drawScene2(scene2)
+
     p.image(scene1, 0, 0);
-    
-    drawScene2()
     p.image(scene2, 400, 0);
   };
 
