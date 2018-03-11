@@ -8,23 +8,28 @@ const sketch = p => {
 
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight);
-    p.colorMode(p.HSB)
+    // p.colorMode(p.HSB)
 
-    scene1 = createGraphics(400, 400);
-    scene2 = createGraphics(400, 400);
+    scene1 = p.createGraphics(400, 400);
+    scene2 = p.createGraphics(400, 400);
+
+    p.background(100)
   };
-
-  drawScene1 = () => {
-    scene1.background(125, 125, 255)
+  
+  const drawScene1 = () => {
+    scene1.background(125, 100, 125)
   }
-
-  drawScene2 = () => {
+  
+  const drawScene2 = () => {
     scene2.background(125, 255, 125)
   }
-
+  
   p.draw = () => {
-    this.drawScene1()
-    this.drawScene2()
+    drawScene1()
+    p.image(scene1, 0, 0);
+    
+    drawScene2()
+    p.image(scene2, 400, 0);
   };
 
   p.windowResized = () => {

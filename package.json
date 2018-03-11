@@ -1,8 +1,8 @@
 {
-  "name": "quadrucci",
+  "name": "gnocchi",
   "version": "1.0.0",
   "main": "/app/index.html",
-  "repository": "git@github.com:wanbinkimoon/quadrucci.git",
+  "repository": "git@github.com:wanbinkimoon/gnocchi.git",
   "author": "Nicola Bertelloni <nicola.bertelloni@gmail.com>",
   "license": "MIT",
   "scripts": {
