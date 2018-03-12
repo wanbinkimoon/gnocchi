@@ -27,7 +27,7 @@ export default (s, p) => {
   s.noFill();
 
   s.strokeWeight(0.5);
-  s.stroke(255);
+  s.stroke(100, 200, 255);
   s.ellipse(100, 100, radius * 2, radius * 2);
   s.triangle(
     trianglePoint2.x1,
@@ -37,7 +37,7 @@ export default (s, p) => {
     trianglePoint2.x3,
     trianglePoint2.y3
   );
-
+  
   // exagon
   s.line(
     trianglePoint2.x1,
@@ -45,42 +45,42 @@ export default (s, p) => {
     trianglePoint.x2,
     trianglePoint.y2
   );
-
+  
   s.line(
     trianglePoint2.x2,
     trianglePoint2.y2,
     trianglePoint.x3,
     trianglePoint.y3
   );
-
+  
   s.line(
     trianglePoint2.x2,
     trianglePoint2.y2,
     trianglePoint.x1,
     trianglePoint.y1
   );
-
+  
   s.line(
     trianglePoint2.x1,
     trianglePoint2.y1,
     trianglePoint.x1,
     trianglePoint.y1
   );
-
+  
   s.line(
     trianglePoint2.x3,
     trianglePoint2.y3,
     trianglePoint.x2,
     trianglePoint.y2
   );
-
+  
   s.line(
     trianglePoint2.x3,
     trianglePoint2.y3,
     trianglePoint.x3,
     trianglePoint.y3
   );
-
+  
   //inner diagonals
   s.line(
     trianglePoint2.x1,
@@ -88,14 +88,15 @@ export default (s, p) => {
     trianglePoint.x3,
     trianglePoint.y3
   );
-
+  
   s.line(
     trianglePoint2.x2,
     trianglePoint2.y2,
     trianglePoint.x2,
     trianglePoint.y2
   );
-
+  
+  s.stroke(255);
   //inner vertical
   const innerRectHeight = (trianglePoint2.y1 - trianglePoint.y3) / 2 * -1;
   s.line(
@@ -104,16 +105,19 @@ export default (s, p) => {
     trianglePoint.x1,
     trianglePoint.y2
   );
-
+  
   const innerRectPont = {
     x: trianglePoint2.x1 + side / 4,
     y: trianglePoint2.y1 + innerRectHeight / 2,
     w: trianglePoint2.x2 - side / 4 - (trianglePoint2.x1 + side / 4),
     h: innerRectHeight,
   };
+  
+  s.stroke(100, 255, 125);
   //inner rect
   s.rect(innerRectPont.x, innerRectPont.y, innerRectPont.w, innerRectPont.h);
-
+  
+  s.stroke(100, 100, 200);
   // innercircl
   s.ellipse(100, 100, innerRectHeight, innerRectHeight);
   s.ellipse(innerRectPont.x, innerRectPont.y, innerRectHeight, innerRectHeight);
@@ -192,6 +196,7 @@ export default (s, p) => {
     innerRectHeight
   );
 
+  s.stroke(100, 255, 125);
   s.line(
     100,
     trianglePoint.y2,
