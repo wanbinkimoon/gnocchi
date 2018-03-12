@@ -1,2 +1,5 @@
-# Quadrucci
-**Quadrucci** is a p5js boilerplate in es6 in wich I will sketch stuff. 
+# Gnocchi
+**Gnocchi** is a collection of p5 sketches     
+
+# Actual collection
+![](https://media.giphy.com/media/B2kiptoXJbinOobCMu/giphy.gif)
