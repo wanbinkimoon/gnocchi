@@ -1,0 +1,85 @@
+let scaleVal = 1;
+
+export default (s, p) => {
+  s.colorMode(p.HSB);
+  const hue = 280;
+  s.background(p.random(hue - 10, hue), 100, 100);
+
+  s.stroke(255);
+  s.strokeWeight(1);
+  s.noFill();
+
+  const deviation = p.randomGaussian(p.min(100, p.frameCount / 4), 20);
+
+  const points = {
+    a: {
+      x: 40,
+      y: 40,
+    },
+    c1: {
+      x: p.randomGaussian(200, deviation),
+      y: p.randomGaussian(0, deviation)
+      // x: 200,
+      // y: 0,
+    },
+    c2: {
+      // x: 0,
+      // y: 200,
+      x: p.randomGaussian(0, deviation),
+      y: p.randomGaussian(200, deviation)
+    },
+    b: {
+      x: 160,
+      y: 160,
+    },
+  };
+
+  
+  let i;
+  const steps = p.randomGaussian(60, 10);
+  for (i = 0; i <= steps; i++) {
+    const t = i / steps;
+    
+    let j;
+    const meridians = 6;
+    for (j = 0; j <= meridians; j++) {
+      const defaultWidth = 200;
+      const spaceBetween = 20 * j;
+      
+      let x = s.curvePoint(
+        points.c1.x,
+        points.a.x + spaceBetween,
+        points.b.x - spaceBetween,
+        points.c2.x,
+        t
+      );
+
+      let y = s.curvePoint(
+        points.c1.y,
+        points.a.y,
+        points.b.y, 
+        points.c2.y, 
+        t);
+
+      s.ellipse(x, y, 1, 1);
+
+      x = s.curvePoint(
+        Math.abs(points.c1.x - defaultWidth),
+        Math.abs(points.a.x - defaultWidth + spaceBetween),
+        Math.abs(points.b.x - defaultWidth - spaceBetween),
+        Math.abs(points.c2.x - defaultWidth),
+        t
+      );
+
+      y = s.curvePoint(
+        Math.abs(points.c1.y),
+        Math.abs(points.a.y),
+        Math.abs(points.b.y),
+        Math.abs(points.c2.y),
+        t
+      );
+
+      s.ellipse(x, y, 1, 1);
+    }
+  }
+};

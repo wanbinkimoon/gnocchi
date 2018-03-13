@@ -5,6 +5,7 @@ import {drawScene1, drawScene2, drawScene3} from './Scenes/scene1to3'
 import drawScene4 from './Scenes/scene4'
 import drawScene5 from './Scenes/scene5'
 import drawScene6 from './Scenes/scene6'
+import drawScene7 from './Scenes/scene7'
 
 let canvas;
 let scene1;
@@ -13,11 +14,12 @@ let scene3;
 let scene4;
 let scene5;
 let scene6;
+let scene7;
 
 const sketch = p => {
 
   p.setup = () => {
-    p.createCanvas(1200, 800);
+    p.createCanvas(1200, 1200);
     // p.colorMode(p.HSB)
 
     scene1 = p.createGraphics(400, 400);
@@ -26,6 +28,7 @@ const sketch = p => {
     scene4 = p.createGraphics(400, 400);
     scene5 = p.createGraphics(400, 400);
     scene6 = p.createGraphics(400, 400);
+    scene7 = p.createGraphics(400, 400);
 
     p.background(255)
   };
@@ -37,6 +40,7 @@ const sketch = p => {
     drawScene4(scene4, p)
     drawScene5(scene5, p)
     drawScene6(scene6, p)
+    drawScene7(scene7, p)
 
     p.image(scene1, 0, 0);
     p.image(scene2, 400, 0);
@@ -44,6 +48,7 @@ const sketch = p => {
     p.image(scene4, 0, 400);
     p.image(scene5, 400, 400);
     p.image(scene6, 800, 400);
+    p.image(scene7, 0, 800);
   };
 
   p.windowResized = () => {
