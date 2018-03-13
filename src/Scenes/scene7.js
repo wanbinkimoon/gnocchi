@@ -6,11 +6,11 @@ let speed = acc
 export default (s, p) => {
   s.colorMode(p.HSB);
   
-  const arc = 300;
+  const arc = 200;
   let direction = 1
   
   if (bounce < -arc) {
-    speed = acc 
+    speed = +acc 
   } else if (bounce > arc) {
     speed = -acc
   }
@@ -20,7 +20,7 @@ export default (s, p) => {
   const hue = 280;
   s.background(hue + bounce, 100, 2);
   s.stroke(hue - bounce / 4, 100, 100);
-  s.strokeWeight(1);
+  s.strokeWeight(.5);
   s.noFill();
 
   const points = {
@@ -73,13 +73,13 @@ export default (s, p) => {
         points.c2.y, 
         t);
 
-      s.ellipse(x, y, 1, 1);
+      s.ellipse(x, y, .5, .5);
 
       x = s.curvePoint(
-        Math.abs(points.c1.x - defaultWidth),
+        Math.abs(points.c1.x - defaultWidth + spaceBetween),
         Math.abs(points.a.x - defaultWidth + spaceBetween),
         Math.abs(points.b.x - defaultWidth - spaceBetween),
-        Math.abs(points.c2.x - defaultWidth),
+        Math.abs(points.c2.x - defaultWidth - spaceBetween) * -1,
         t
       );
 
@@ -87,11 +87,11 @@ export default (s, p) => {
         Math.abs(points.c1.y),
         Math.abs(points.a.y),
         Math.abs(points.b.y),
-        Math.abs(points.c2.y),
+        Math.abs(points.c2.y) * -1,
         t
       );
 
-      s.ellipse(x, y, 1, 1);
+      s.ellipse(x, y, .5, .5);
     }
   }
 };
