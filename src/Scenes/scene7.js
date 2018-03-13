@@ -1,15 +1,27 @@
-let scaleVal = 1;
+
+let bounce = 1;
+let acc = 10
+let speed = acc
 
 export default (s, p) => {
   s.colorMode(p.HSB);
+  
+  const arc = 300;
+  let direction = 1
+  
+  if (bounce < -arc) {
+    speed = acc 
+  } else if (bounce > arc) {
+    speed = -acc
+  }
+  
+  bounce += speed
+  
   const hue = 280;
-  s.background(p.random(hue - 10, hue), 100, 100);
-
-  s.stroke(255);
+  s.background(hue + bounce, 100, 2);
+  s.stroke(hue - bounce / 4, 100, 100);
   s.strokeWeight(1);
   s.noFill();
-
-  const deviation = p.randomGaussian(p.min(100, p.frameCount / 4), 20);
 
   const points = {
     a: {
@@ -17,16 +29,16 @@ export default (s, p) => {
       y: 40,
     },
     c1: {
-      x: p.randomGaussian(200, deviation),
-      y: p.randomGaussian(0, deviation)
+      x: 200 + bounce,
+      y: 0 + bounce
       // x: 200,
       // y: 0,
     },
     c2: {
       // x: 0,
       // y: 200,
-      x: p.randomGaussian(0, deviation),
-      y: p.randomGaussian(200, deviation)
+      x: 0 + bounce,
+      y: 200 + bounce
     },
     b: {
       x: 160,
