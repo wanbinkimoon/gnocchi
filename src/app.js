@@ -31,8 +31,6 @@ const sketch = p => {
     scene6 = p.createGraphics(400, 400);
     scene7 = p.createGraphics(400, 400);
     scene8 = p.createGraphics(400, 400);
-    scene8.colorMode(p.HSB)
-    scene8.background(280, 100, 100);
     p.background(255)
   };
   
