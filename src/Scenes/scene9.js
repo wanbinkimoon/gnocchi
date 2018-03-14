@@ -1,9 +1,10 @@
-
 let bounce = 1;
-let speed = .5
+const acc = 20
+let speed = acc
+let ease = .05
 
 export default (s, p) => {
-  // s.colorMode(p.HSB);
+  s.colorMode(p.HSB);
 
   s.background(45, 0, 40);
   s.stroke(165, 60, 160);
@@ -20,31 +21,31 @@ export default (s, p) => {
   let direction = 1
 
   if (bounce < 0) {
-    speed = .5 
+    speed += acc
   } else if (bounce > arc) {
-    speed = -.5
+    speed -= acc
   }
   console.log(speed)
-  bounce += speed
+  bounce += speed * ease
   console.log(bounce)
 
   
   const points = {
     a: {
-      x: 160 - bounce,
-      y: 160,
+      x: 0 - bounce,
+      y: 0 + bounce,
     },
     c1: {
-      x: 300 + bounce,
-      y: 300 + bounce,
+      x: 0 - bounce,
+      y: 0 + bounce / 100,
     },
     c2: {
-      x: 300 + bounce,
-      y: -300 - bounce,
+      x: 200 - bounce,
+      y: 0 + bounce / 100,
     },
     b: {
-      x: 20,
-      y: 100 + bounce,
+      x: 200 - bounce,
+      y: 0 + bounce,
     },
   };
 
@@ -55,26 +56,28 @@ export default (s, p) => {
     const t = i / steps;
     
     let j;
-    const meridians = 60;
+    const meridians = 100;
     for (j = 0; j <= meridians; j++) {
       const defaultWidth = 200;
       const spaceBetween = 6 * j;
+      const wave = 5 * j
       let x = s.curvePoint(
-        points.c1.x,
-        points.a.x - spaceBetween,
+        points.c1.x + wave,
+        points.a.x - spaceBetween + (bounce * 2),
         points.b.x + spaceBetween,
-        points.c2.x,
+        points.c2.x + (bounce * 2) + wave,
         t
       );
 
       let y = s.curvePoint(
-        points.c1.y,
-        points.a.y - spaceBetween,
-        points.b.y, 
-        points.c2.y, 
+        points.c1.y - wave,
+        points.a.y - spaceBetween + (bounce * 2),
+        points.b.y + (bounce * 2), 
+        points.c2.y - wave, 
         t);
-
-      s.ellipse(x, y, .5, .5);
+        
+        s.ellipse(x, y + bounce - wave, .5 + wave / 10, .5);
+        s.ellipse(-x, -y + bounce, .5 + wave / 10, .5);
     }
   }
 };
