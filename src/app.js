@@ -1,6 +1,5 @@
 import p5 from 'p5';
 import 'p5/lib/addons/p5.sound';
-import './Vendors/p5.func'
 
 import {drawScene1, drawScene2, drawScene3} from './Scenes/scene1to3'
 import drawScene4 from './Scenes/scene4'
